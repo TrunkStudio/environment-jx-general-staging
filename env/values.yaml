@@ -16,6 +16,27 @@ expose:
     domain: k8s.trunksys.com
     exposer: Ingress
     http: "true"
+mysql:
+  enabled: true
+  image: "mysql"
+  imageTag: "5.7"
+
+  busybox:
+    image: "busybox"
+    tag: "1.29.3"
+
+  testFramework:
+    image: "dduportal/bats"
+    tag: "0.4.0"  
+  mysqlRootPassword: root-pass
+  mysqlUser: user
+  mysqlPassword: user-pass
+  persistence:
+    enabled: true
+    storageClass: "managed-nfs-storage"
+    accessMode: ReadWriteOnce
+    size: 20Gi
+    annotations: {}
 jenkins:
   Servers:
     Global: {}
